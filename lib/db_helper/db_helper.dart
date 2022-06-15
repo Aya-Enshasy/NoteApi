@@ -37,12 +37,7 @@ class DatabaseHelper {
     // open
     var DatabasesPath = join(await getDatabasesPath(), NameOfDatabase);
     var database = await  openDatabase(DatabasesPath, version: version , onCreate: (db, version) {
-      db.execute('CREATE TABLE $table($id INTEGER PRIMARY KEY AUTOINCREMENT ,'
-          ' $title TEXT, ''$description TEXT,'
-          '$date TEXT'
-          '$color INTEGER,'
-          ' $priority INTEGER, )'
-         );},
+      db.execute('CREATE TABLE $table($id INTEGER PRIMARY KEY AUTOINCREMENT , $title TEXT, ''$description TEXT, $priority INTEGER, $color INTEGER,$date TEXT)');},
         onUpgrade: (db, oldVersion, newVersion) {});
 
     return Future.value(database);
